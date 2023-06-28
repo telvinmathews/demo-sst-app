@@ -1,15 +1,9 @@
-import {Table, Stack, Bucket} from 'sst/constructs';
-import {App, StackProps} from 'aws-cdk-lib';
-
-interface StorageStackProps {
-  stack: Stack;
-  app: App;
-}
-
-export function StorageStack({stack, app}: StorageStackProps): {
+import {Table, Bucket, StackContext} from 'sst/constructs';
+interface IStacks {
   table: Table;
   bucket: Bucket;
-} {
+}
+export function StorageStack({stack}: StackContext): IStacks {
   const bucket = new Bucket(stack, 'Uploads');
   const table = new Table(stack, 'Notes', {
     fields: {
