@@ -28,5 +28,3 @@ export const main = handler(async (event: any) => {
 
   return {status: true};
 });
-
-//how to write a json object in postman?
