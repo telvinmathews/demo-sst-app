@@ -2,7 +2,7 @@ import {Table} from 'sst/node/table';
 import handler from '../../core/src/handler';
 import dynamodb from '../../core/src/dynamodb';
 
-export const main = handler(async () => {
+export const main = handler(async (event: any) => {
   const params = {
     TableName: Table.Notes.tableName,
     // 'KeyConditionExpression' defines the condition for the query
