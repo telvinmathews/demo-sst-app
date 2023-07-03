@@ -16,6 +16,7 @@ export function ApiStack({stack, app}: StackContext) {
         }
       }
     },
+    cors: true,
     routes: {
       'POST /notes': 'packages/functions/src/create.main',
       'GET /notes/{id}': 'packages/functions/src/get.main',
