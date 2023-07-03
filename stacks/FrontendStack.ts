@@ -26,6 +26,6 @@ export function FrontendStack({stack, app}: {stack: any; app: any}) {
 
   // Show the url in the output
   stack.addOutputs({
-    SiteUrl: site.url || 'http://localhost:5173'
+    SiteUrl: site.url || 'http://localhost:3000'
   });
 }
