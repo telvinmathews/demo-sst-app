@@ -1,6 +1,6 @@
-import {Table} from 'sst/node/table';
-import handler from '../../core/src/handler';
-import dynamodb from '../../core/src/dynamodb';
+import { Table } from "sst/node/table";
+import handler from "../../core/src/handler";
+import dynamodb from "../../core/src/dynamodb";
 
 export const main = handler(async (event: any) => {
   const params = {
@@ -8,12 +8,12 @@ export const main = handler(async (event: any) => {
     // 'KeyConditionExpression' defines the condition for the query
     // - 'userId = :userId': only return items with matching 'userId'
     // partition key
-    KeyConditionExpression: 'userId = :userId',
+    KeyConditionExpression: "userId = :userId",
     // 'ExpressionAttributeValues' defines the value in the condition
     // - ':userId': defines 'userId' to be the id of the author
     ExpressionAttributeValues: {
-      ':userId': '123'
-    }
+      ":userId": event.requestContext.authorizer.iam.cognitoIdentity.identityId,
+    },
   };
   const result = await dynamodb.query(params);
   // Return the matching list of items in response body
